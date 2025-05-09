@@ -10,9 +10,22 @@ public class PlayerLocomotionState : PlayerBaseState
         base.Enter();
     }
 
-    public override void PhysicsUpdate()
+    public override void Execute()
     {
-        base.PhysicsUpdate();
-        Player.Mover.Move();
+        base.Execute();
+        Mover.Move();
+
+        if (Player.InputDir.magnitude <= 0)
+        {
+            Mover.SetMoveType(MoveType.Idle);
+        }
+        else if (Player.InputDir.magnitude >= 0.5f)
+        {
+            Mover.SetMoveType(MoveType.Run);
+        }
+        else
+        {
+            Mover.SetMoveType(MoveType.Walk);
+        }
     }
 }

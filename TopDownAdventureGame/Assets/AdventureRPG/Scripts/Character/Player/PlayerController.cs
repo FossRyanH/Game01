@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     [field: SerializeField] public BodySwapper CharacterRig { get; private set; }
     [field: SerializeField] public PlayerStateMachine PlayerStateMachine { get; private set; }
     public Mover Mover { get; private set; }
-    public AnimationController AnimationController { get; private set; }
+    [field: SerializeField] public AnimationController AnimationController { get; private set; }
     #endregion
 
     #region Model Vars

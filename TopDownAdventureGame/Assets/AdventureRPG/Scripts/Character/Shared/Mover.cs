@@ -50,19 +50,22 @@ public class Mover : MonoBehaviour
         switch (_moveType)
         {
             case MoveType.Walk:
-                MoveSpeed = 2f;
+                MoveSpeed = 1f;
                 break;
             case MoveType.Run:
-                MoveSpeed = 4f;
+                MoveSpeed = 3f;
                 break;
             case MoveType.Sprint:
-                MoveSpeed = 7f;
+                MoveSpeed = 6f;
                 break;
             case MoveType.Sneak:
-                MoveSpeed = 1.5f;
+                MoveSpeed = 0.5f;
+                break;
+            case MoveType.Idle:
+                MoveSpeed = 0f;
                 break;
             default:
-                MoveSpeed = 0f;
+                Debug.Log("Move type not chosen.");
                 break;
         }
     }
@@ -72,8 +75,8 @@ public class Mover : MonoBehaviour
         if (InputDir.magnitude > 0.01f)
         {
             Vector3 direction = new Vector3(InputDir.x, 0f, InputDir.y);
-            transform.position += direction * MoveSpeed * Time.fixedDeltaTime;
+            transform.position += direction * MoveSpeed * Time.deltaTime;
         }
     }
 }
-public enum MoveType { Walk, Run, Sprint, Sneak }
+public enum MoveType { Idle, Walk, Run, Sprint, Sneak }

@@ -1,18 +1,15 @@
+using System.Collections;
 using UnityEngine;
 
 public class AnimationController : MonoBehaviour
 {
     [SerializeField] Mover mover;
-    Animator _animator;
-
-    // Player if applicaable
-    PlayerController _player;
+    [SerializeField] Animator animator;
 
     void Awake()
     {
-        _animator = GetComponentInChildren<Animator>();
+        StartCoroutine(FindAnimatorDelay());
         mover = GetComponent<Mover>();
-        
     }
 
     void OnEnable()
@@ -20,29 +17,39 @@ public class AnimationController : MonoBehaviour
         mover.OnMoveTypeChanged += HandleMoveTypeChanged;
     }
 
+    void OnDisable()
+    {
+        mover.OnMoveTypeChanged -= HandleMoveTypeChanged;
+    }
+
     void Update()
     {
-        if (mover || _animator == null) return;
-
         float target = mover.InputDir.magnitude;
-        float current = _animator.GetFloat("Movement");
+        float current = animator.GetFloat("MovementInput");
         float smoothed = Mathf.Lerp(current, target, Time.deltaTime * 10f);
-        _animator.SetFloat("Movement", smoothed);
+        animator.SetFloat("MovementInput", smoothed);
     }
 
     void HandleMoveTypeChanged(object sender, MoveTypeChangedEventArgs e)
     {
         if (e.NewType == MoveType.Sprint)
         {
-            _animator.SetFloat("Movement", 2f);
+            animator.SetFloat("MovementInput", 2f);
         }
         else if (e.NewType == MoveType.Walk)
         {
-            _animator.SetFloat("Movement", 0.5f);
+            animator.SetFloat("MovementInput", 0.5f);
         }
         else
         {
-            _animator.SetFloat("Movement", 1f);
+            animator.SetFloat("MovementInput", 1f);
         }
+    }
+
+    IEnumerator FindAnimatorDelay()
+    {
+        yield return new WaitForFixedUpdate();
+        animator = GetComponentInChildren<Animator>();
+        StopCoroutine(FindAnimatorDelay());
     }
 }
