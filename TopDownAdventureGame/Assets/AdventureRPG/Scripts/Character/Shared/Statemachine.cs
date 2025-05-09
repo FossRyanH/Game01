@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 [Serializable]
-public class Statemachine : MonoBehaviour
+public class Statemachine
 {
     public IState CurrentState { get; private set; }
 
