@@ -65,16 +65,16 @@ public class Mover : MonoBehaviour
         switch (_moveType)
         {
             case MoveType.Walk:
-                MoveSpeed = 1f;
+                MoveSpeed = 1.5f;
                 break;
             case MoveType.Run:
-                MoveSpeed = 3f;
+                MoveSpeed = 4f;
                 break;
             case MoveType.Sprint:
-                MoveSpeed = 6f;
+                MoveSpeed = 7.5f;
                 break;
             case MoveType.Sneak:
-                MoveSpeed = 0.5f;
+                MoveSpeed = 0.75f;
                 break;
             case MoveType.Idle:
                 MoveSpeed = 0f;
