@@ -5,5 +5,6 @@ public interface IState
 {
     void Enter();
     void Execute();
+    void PhysicsUpdate();
     void Exit();
 }

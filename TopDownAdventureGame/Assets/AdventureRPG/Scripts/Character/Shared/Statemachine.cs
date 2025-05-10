@@ -2,9 +2,9 @@ using System;
 using UnityEngine;
 
 [Serializable]
-public class Statemachine : MonoBehaviour
+public class Statemachine
 {
-    public IState CurrentState { get; private set; }
+    [field: SerializeField] public IState CurrentState { get; private set; }
 
     public void InitializeState(IState firstState)
     {
@@ -25,6 +25,14 @@ public class Statemachine : MonoBehaviour
         if (CurrentState != null)
         {
             CurrentState?.Execute();
+        }
+    }
+
+    public void ExecutePhysics()
+    {
+        if (CurrentState != null)
+        {
+            CurrentState?.PhysicsUpdate();
         }
     }
 }
