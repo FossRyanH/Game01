@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     [field: SerializeField] public BodySwapper CharacterRig { get; private set; }
     [field: SerializeField] public PlayerStateMachine PlayerStateMachine { get; private set; }
     public Mover Mover { get; private set; }
-    [field: SerializeField] public AnimationController AnimationController { get; private set; }
+    public AnimationController AnimationController { get; private set; }
     #endregion
 
     #region Model Vars
@@ -28,7 +28,6 @@ public class PlayerController : MonoBehaviour
         AnimationController = GetComponent<AnimationController>();
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         SetBodyType();
@@ -45,6 +44,9 @@ public class PlayerController : MonoBehaviour
         PlayerStateMachine.ExecutePhysics();
     }
 
+    /// <summary>
+    /// Takes the information given at bootup to select either Male || female models, more to come on this
+    /// </summary>
     void SetBodyType()
     {
         CharacterRig.InstantiateBody(bodyType);

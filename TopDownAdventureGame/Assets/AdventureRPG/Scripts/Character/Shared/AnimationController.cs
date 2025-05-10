@@ -30,6 +30,11 @@ public class AnimationController : MonoBehaviour
         animator.SetFloat("MovementInput", smoothed);
     }
 
+    /// <summary>
+    /// Using the enum "MoveType" this will control the animation for movement, which will include all types of locomotion later on.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     void HandleMoveTypeChanged(object sender, MoveTypeChangedEventArgs e)
     {
         if (e.NewType == MoveType.Sprint)
@@ -46,6 +51,9 @@ public class AnimationController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// There was a bug with finding the animator on a not-quite-yet-spawned character body, this fixes that bug by creating a delay before looking for it.
+    /// </summary>
     IEnumerator FindAnimatorDelay()
     {
         yield return new WaitForFixedUpdate();

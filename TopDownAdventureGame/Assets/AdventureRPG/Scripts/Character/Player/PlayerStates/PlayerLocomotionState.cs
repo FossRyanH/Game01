@@ -13,7 +13,7 @@ public class PlayerLocomotionState : PlayerBaseState
     public override void Execute()
     {
         base.Execute();
-        Mover.Move();
+        Mover.Move(Player.InputDir);
 
         if (Player.InputDir.magnitude <= 0)
         {

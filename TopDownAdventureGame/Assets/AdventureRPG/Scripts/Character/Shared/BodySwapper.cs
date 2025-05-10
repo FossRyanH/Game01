@@ -10,6 +10,10 @@ public class BodySwapper : MonoBehaviour
     GameObject _body;
     #endregion
 
+    /// <summary>
+    /// Creates the character body based upon the M/F selection in the beginning
+    /// </summary>
+    /// <param name="bodyType"></param>
     public void InstantiateBody(BodyType bodyType)
     {
         if (_body != null) Destroy(_body);
