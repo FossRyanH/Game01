@@ -24,10 +24,8 @@ public class AnimationController : MonoBehaviour
 
     void Update()
     {
-        float target = mover.InputDir.magnitude;
-        float current = animator.GetFloat("MovementInput");
-        float smoothed = Mathf.Lerp(current, target, Time.deltaTime * 10f);
-        animator.SetFloat("MovementInput", smoothed);
+        float inputMagnitude = mover.InputDir.magnitude;
+        animator.SetFloat("MovementInput", inputMagnitude, 0.2f, Time.deltaTime);
     }
 
     /// <summary>

@@ -14,18 +14,26 @@ public class PlayerLocomotionState : PlayerBaseState
     {
         base.Execute();
         Mover.Move(Player.InputDir);
+        SetMoveSpeed();
+    }
 
-        if (Player.InputDir.magnitude <= 0)
+    void SetMoveSpeed()
+    {
+        if (Player.InputDir.magnitude > 1f)
         {
-            Mover.SetMoveType(MoveType.Idle);
+            Mover.SetMoveType(MoveType.Sprint);
         }
-        else if (Player.InputDir.magnitude >= 0.5f)
+        else if (Player.InputDir.magnitude <= 1f)
         {
             Mover.SetMoveType(MoveType.Run);
         }
-        else
+        else if (Player.InputDir.magnitude <= 0.5f)
         {
             Mover.SetMoveType(MoveType.Walk);
+        }
+        else
+        {
+            Mover.SetMoveType(MoveType.Idle);
         }
     }
 }

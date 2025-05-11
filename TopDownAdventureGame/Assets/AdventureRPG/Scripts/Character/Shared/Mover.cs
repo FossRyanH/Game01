@@ -1,11 +1,17 @@
 using System;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 public class Mover : MonoBehaviour
 {
     #region Movement Related
     public float MoveSpeed;
+    public MoveType CurrentMoveType
+    {
+        get { return _moveType; }
+    }
     MoveType _moveType;
+    [SerializeField] float accelerationSpeed = 10f;
     [SerializeField] float rotationSpeed = 10f;
     #endregion
 
@@ -13,6 +19,7 @@ public class Mover : MonoBehaviour
     IMovementHandler _moveHandler;
     Vector3 _moveDir;
     public Vector2 InputDir { get; private set; }
+    [SerializeField] float deadzone = 0.1f;
     #endregion
 
     #region Events
@@ -43,7 +50,7 @@ public class Mover : MonoBehaviour
 
         MoveType previous = _moveType;
         _moveType = newType;
-        UpdateMoveSpeed();
+        UpdateMoveSpeed(newType);
 
         OnMoveTypeChanged?.Invoke(this, new MoveTypeChangedEventArgs(previous, newType));
     }
@@ -60,9 +67,11 @@ public class Mover : MonoBehaviour
     /// <summary>
     /// Updates the movement speed based upon whether or not the character is running, walking, idle...etc
     /// </summary>
-    public void UpdateMoveSpeed()
+    public void UpdateMoveSpeed(MoveType movetype)
     {
-        switch (_moveType)
+        _moveType = movetype;
+
+        switch (movetype)
         {
             case MoveType.Walk:
                 MoveSpeed = 2f;
