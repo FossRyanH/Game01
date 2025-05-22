@@ -22,6 +22,34 @@ public class PCGAlgos : MonoBehaviour
         List<Vector3Int> pathList = new List<Vector3Int>();
         Vector3Int currentPos = startingPos;
 
-        path.Add
+        path.Add(currentPos);
+        pathList.Add(currentPos);
+
+        while (path.Count < walkLength)
+        {
+            List<Vector3Int> directions = new(Direction3D.CardinalDirectionsList);
+            Shuffle(directions);
+
+            bool moved = false;
+            foreach (var dir in directions)
+            {
+                var next = currentPos + dir;
+                if (!path.Contains(next))
+                {
+                    currentPos = next;
+                    path.Add(currentPos);
+                    pathList.Add(currentPos);
+                    moved = true;
+                    break;
+                }
+            }
+
+            if (!moved)
+            {
+                currentPos = pathList[Rng.Next(pathList.Count)];
+            }
+        }
+
+        return path;
     }
 }
