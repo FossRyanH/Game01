@@ -515,16 +515,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 379ef34e39c917447aff35f4d816da5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _seed: 155625703
-  _width: 64
-  _height: 64
-  maxRoomCount: 10
-  _roomWidthMin: 3
-  _roomWidthMax: 10
-  _roomLengthMin: 3
-  _roomLengthMax: 10
-  _hallwayLengthMin: 2
-  _hallwayLengthMax: 5
+  <RoomLevelLayout>k__BackingField: {fileID: 11400000, guid: 7ed8e2a918d420440b10ef9ac4a88f59, type: 2}
   _levelLayoutDisplay: {fileID: 405960528}
 --- !u!4 &438184971
 Transform:
