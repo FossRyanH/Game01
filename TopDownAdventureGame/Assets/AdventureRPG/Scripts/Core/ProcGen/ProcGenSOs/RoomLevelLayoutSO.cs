@@ -5,23 +5,38 @@ using System;
 public class RoomLevelLayoutSO : ScriptableObject
 {
     #region Map Settings
-    [field: SerializeField] public int Width { get; private set;} = 64;
-    [field: SerializeField] public int Height { get; private set;} = 64;
-    [field: SerializeField] public int MaxRoomCount { get; private set;} = 8;
-    [field: SerializeField] public int MinRoomDistance { get;private set;} = 1;
-    [field: SerializeField] public int MaxRoomDistance { get; private set;} = 5;
+    [SerializeField] int _width = 64;
+    [SerializeField] int _height = 64;
+    [SerializeField] int _maxRoomCount = 8;
+    [SerializeField] int _minRoomDistance = 1;
+    [SerializeField] int _maxRoomDistance = 5;
+    [SerializeField] int _roomWidthMin = 5;
+    [SerializeField] int _roomWidthMax = 10;
+    [SerializeField] int _roomLengthMin = 5;
+    [SerializeField] int _roomLengthMax = 10;
     #endregion
 
     #region Room Settings
-    [field: SerializeField] public int RoomWidthMin { get; private set;} = 3;
-    [field: SerializeField] public int RoomWidthMax { get; private set;} = 5;
-    [field: SerializeField] public int RoomLengthMin { get; private set;} = 3;
-    [field: SerializeField] public int RoomLengthMax { get; private set;} = 5;
-    [field: SerializeField] public int DoorDistanceFromEdge {get; private set;} = 1;
+    [SerializeField] int _doorDistanceFromEdge = 1;
     #endregion
 
-        #region Hallway Settings
-    [field: SerializeField] public int HallwayLengthMin = 1;
-    [field: SerializeField] public int HallwayLengthMax = 5;
+    #region Hallway Settings
+    [SerializeField] int _hallwayLengthMin = 1;
+    [SerializeField] int _hallwayLengthMax = 5;
+    #endregion
+
+    #region Public Getters
+    public int Width { get => _width; }
+    public int Height { get => _height; }
+    public int MinRoomDistance { get => _minRoomDistance; }
+    public int MaxRoomCount { get => _maxRoomCount; }
+    public int MaxRoomDistance { get => _maxRoomDistance; }
+    public int RoomWidthMin { get => _roomWidthMin; }
+    public int RoomWidthMax { get => _roomWidthMax; }
+    public int RoomLengthMin { get => _roomLengthMin; }
+    public int RoomLengthMax { get => _roomLengthMax; }
+    public int DoorDistanceFromEdge { get => _doorDistanceFromEdge; }
+    public int HallwayLengthMin { get => _hallwayLengthMin; }
+    public int HallwayLengthMax { get => _hallwayLengthMax; }
     #endregion
 }

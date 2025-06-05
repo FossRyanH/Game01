@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8308aa4408db434a91732b934b9a83a, type: 3}
   m_Name: RoomLevelConfig01
   m_EditorClassIdentifier: 
-  <Width>k__BackingField: 64
-  <Height>k__BackingField: 64
-  <MaxRoomCount>k__BackingField: 12
-  <MinRoomDistance>k__BackingField: 1
-  <MaxRoomDistance>k__BackingField: 5
-  <RoomWidthMin>k__BackingField: 5
-  <RoomWidthMax>k__BackingField: 12
-  <RoomLengthMin>k__BackingField: 5
-  <RoomLengthMax>k__BackingField: 12
-  <DoorDistanceFromEdge>k__BackingField: 1
-  HallwayLengthMin: 1
-  HallwayLengthMax: 5
+  _width: 64
+  _height: 64
+  _maxRoomCount: 12
+  _minRoomDistance: 1
+  _maxRoomDistance: 5
+  _roomWidthMin: 5
+  _roomWidthMax: 12
+  _roomLengthMin: 5
+  _roomLengthMax: 12
+  _doorDistanceFromEdge: 1
+  _hallwayLengthMin: 1
+  _hallwayLengthMax: 5
